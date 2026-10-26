@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TCPRI | Team Workspace</title><link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>.brand-logo{width:82px;height:58px;object-fit:contain;display:block}.art-logo{width:118px;height:76px;object-fit:contain;display:block;margin-bottom:10px}.art-card-main{padding:12px}</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" th:href="@{/dashboard}" aria-label="TCPRI dashboard"><img class="brand-logo" th:src="@{/images/tcpri-logo.png}" alt="TCPRI logo"><span><strong>TCPRI</strong><small>TEAM WORKSPACE</small></span></a>
+  <nav class="main-nav" aria-label="Main navigation"><a class="active" th:href="@{/dashboard}">Overview</a><a th:href="@{/tasks}">Tasks</a><a th:href="@{/posts}">Content studio</a><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/users}">Administration</a></nav>
+  <div class="profile-area"><span class="online-dot"></span><span class="signed-in" th:text="${email}">member@tcpri.org</span><form method="post" th:action="@{/logout}"><button class="logout-button" type="submit">Sign out</button></form></div>
+</header>
+<main class="page-shell">
+  <section class="welcome-row"><div><p class="eyebrow">TCPRI • INTERNAL WORKSPACE</p><h1>Good work starts with a clear plan.</h1><p class="muted">Manage team assignments, coordinate content, and keep every initiative moving.</p></div><a class="primary-button" th:href="@{/tasks/new}" sec:authorize="hasAnyRole('ADMIN','MANAGER')">＋ Assign a task</a></section>
+  <section class="hero-panel"><div class="hero-copy"><span class="hero-kicker">ONE TEAM. ONE WORKSPACE.</span><h2>Make every update<br>count for TCPRI.</h2><p>Bring assignments and social content into one organized workflow—from first draft to internal approval.</p><div class="hero-actions"><a class="light-button" th:href="@{/tasks}">View team tasks <span aria-hidden="true">→</span></a><a class="hero-link" th:href="@{/posts}">Open content studio</a></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-card art-card-main"><img class="art-logo" th:src="@{/images/tcpri-logo.png}" alt="TCPRI logo"><strong>TCPRI</strong><small>Ideas into action</small></div><div class="art-chip chip-one">✓ Task tracking</div><div class="art-chip chip-two">↗ Content workflow</div></div></section>
+  <section class="section-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2>Quick access</h2></div><span class="section-note">Everything your team needs, in one place</span></section>
+  <section class="feature-grid">
+    <article class="feature-card"><div class="feature-icon icon-blue">▤</div><div class="feature-top"><span class="feature-label">TEAM OPERATIONS</span><span class="feature-arrow">↗</span></div><h3>Tasks & assignments</h3><p>See assigned work, track progress, and keep due dates visible.</p><a th:href="@{/tasks}">Go to tasks <span>→</span></a></article>
+    <article class="feature-card"><div class="feature-icon icon-violet">◈</div><div class="feature-top"><span class="feature-label">COMMUNICATIONS</span><span class="feature-arrow">↗</span></div><h3>Content studio</h3><p>Create platform-specific drafts and submit them for internal review.</p><a th:href="@{/posts}">Manage content <span>→</span></a></article>
+    <article class="feature-card" sec:authorize="hasRole('ADMIN')"><div class="feature-icon icon-green">♙</div><div class="feature-top"><span class="feature-label">ADMINISTRATION</span><span class="feature-arrow">↗</span></div><h3>Team access</h3><p>Approve registration requests and manage member roles securely.</p><a th:href="@{/admin/users}">Manage team access <span>→</span></a></article>
+    <article class="feature-card" sec:authorize="hasRole('MANAGER')"><div class="feature-icon icon-green">♙</div><div class="feature-top"><span class="feature-label">TEAM COORDINATION</span><span class="feature-arrow">↗</span></div><h3>Assignment overview</h3><p>Coordinate work across the team and monitor task progress.</p><a th:href="@{/tasks}">Review assignments <span>→</span></a></article>
+  </section>
+  <section class="workflow-note"><div class="note-icon">i</div><div><strong>Built for TCPRI's workflow</strong><p>Task assignment emails are sent when SMTP is configured. Social posts currently support drafts and internal approval; direct publishing and platform analytics require approved API integrations.</p></div></section>
+  <footer class="page-footer"><span>© TCPRI Team Workspace</span><span>Internal use only • Keep your login secure</span></footer>
+</main>
+</body></html>

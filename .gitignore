@@ -1,0 +1,9 @@
+target/
+data/
+*.log
+startup-log.txt
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
