@@ -46,4 +46,5 @@ public class AppUser {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setRole(Role role) { this.role = role; }
     public void setStatus(AccountStatus status) { this.status = status; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 }
