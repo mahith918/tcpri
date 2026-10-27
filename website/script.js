@@ -17,6 +17,8 @@ const writeForUsLink = document.querySelector('.write-link');
 if (writeForUsLink) writeForUsLink.remove();
 const workspaceLabel = document.querySelector('.workspace-intro .section-number');
 if (workspaceLabel) workspaceLabel.textContent = 'TCPRI TEAM WORKSPACE';
+const liveStatus = document.querySelector('.workspace-panel .status-dot');
+if (liveStatus) liveStatus.remove();
 const joinLabel = document.querySelector('.join-cta .section-number');
 if (joinLabel) joinLabel.textContent = 'JOIN TCPRI';
 document.querySelectorAll('a[href^="http://localhost:8080"]').forEach(function (link) {
