@@ -28,6 +28,8 @@ public class TaskController {
         model.addAttribute("tasks", canSeeAll ? tasks.findAllByOrderByDueDateAsc()
                                               : tasks.findByAssignee_EmailIgnoreCaseOrderByDueDateAsc(auth.getName()));
         model.addAttribute("canAssign", canSeeAll);
+        model.addAttribute("canDelete", auth.getAuthorities().stream()
+            .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
         return "tasks";
     }
 
@@ -72,6 +74,18 @@ public class TaskController {
         task.setStatus(status);
         tasks.save(task);
         flash.addFlashAttribute("message", "Task status updated.");
+        return "redirect:/tasks";
+    }
+
+    @PostMapping("/{id}/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String delete(@PathVariable Long id, RedirectAttributes flash) {
+        if (!tasks.existsById(id)) {
+            throw new org.springframework.web.server.ResponseStatusException(
+                org.springframework.http.HttpStatus.NOT_FOUND, "Task not found.");
+        }
+        tasks.deleteById(id);
+        flash.addFlashAttribute("message", "Task deleted.");
         return "redirect:/tasks";
     }
 }

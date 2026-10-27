@@ -1,0 +1,11 @@
+.workspace-panel,
+.workspace-panel .panel-top,
+.workspace-panel .panel-list,
+.workspace-panel .panel-list > div {
+  color: #e9f0ed;
+}
+
+.workspace-panel .panel-stat span,
+.workspace-panel .panel-list b {
+  color: #aab8b8;
+}

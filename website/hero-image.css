@@ -1,0 +1,2 @@
+.hero-art{background-image:linear-gradient(90deg,rgba(5,18,29,.2),rgba(5,18,29,.05)),url('tcpri-hero-background.jpe');background-size:cover;background-position:65% center}.hero-art .orbit,.hero-art .core,.hero-art .art-caption{display:none}
+@media(max-width:760px){.hero-art{background-position:62% center}}

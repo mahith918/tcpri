@@ -1,0 +1,3 @@
+.brand img{display:block;width:112px;height:auto;object-fit:contain}
+.brand-light img{opacity:.95}
+@media(max-width:760px){.brand img{width:96px}}

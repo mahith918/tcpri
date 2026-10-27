@@ -1,0 +1,11 @@
+.social-icons svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+
+.social-icons a[aria-label="TCPRI LinkedIn"] {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
