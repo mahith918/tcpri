@@ -15,6 +15,10 @@ const socialIcons = document.querySelector('.masthead-actions .social-icons');
 const mastheadActions = document.querySelector('.masthead-actions');
 const writeForUsLink = document.querySelector('.write-link');
 if (writeForUsLink) writeForUsLink.remove();
+const workspaceLabel = document.querySelector('.workspace-intro .section-number');
+if (workspaceLabel) workspaceLabel.textContent = 'TCPRI TEAM WORKSPACE';
+const joinLabel = document.querySelector('.join-cta .section-number');
+if (joinLabel) joinLabel.textContent = 'JOIN TCPRI';
 document.querySelectorAll('a[href^="http://localhost:8080"]').forEach(function (link) {
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
