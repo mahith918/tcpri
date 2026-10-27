@@ -89,6 +89,8 @@ if (workspaceSection) {
 }
 
 const latestLink = document.querySelector('.hero-actions .text-link');
+document.querySelectorAll('a[href="#search"]').forEach(function (link) { link.remove(); });
+document.querySelectorAll('.article-search').forEach(function (section) { section.remove(); });
 if (latestLink) {
   latestLink.href = 'https://www.instagram.com/tcpri.in';
   latestLink.target = '_blank';
