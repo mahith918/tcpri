@@ -21,7 +21,7 @@ This is a functional starter project, not a guarantee of error-free production s
 
 ## Prerequisites
 
-- JDK 21
+- JDK 26 (the Docker image and Maven compiler target Java 26)
 - Maven 3.6.3 or later (Maven 3.9.x recommended)
 - H2 (embedded; included with the application)
 
@@ -59,6 +59,22 @@ Task assignment emails are sent to the assigned team member and, if configured, 
 - `APP_BASE_URL=http://localhost:8080` — use your deployed HTTPS URL after deployment
 
 For Gmail, use a Google App Password if your account is eligible and App Passwords are enabled. For a workplace account, use TCPRI's approved mail provider. Never put credentials directly in Java source or commit them to a repository. Without `MAIL_FROM`, assignment emails are skipped and a warning is logged. SMTP errors are logged and do not roll back the task.
+
+## Deploy to Render
+
+The GitHub repository includes a Dockerfile for the Spring Boot application. In Render, connect the repository's `master` branch to a web service using the Docker runtime, and create a PostgreSQL service in the same region. In the web service's Environment, configure:
+
+- `DB_URL=jdbc:postgresql://<internal-hostname>:<port>/<database>`
+- `DB_USERNAME` — the PostgreSQL database username
+- `DB_PASSWORD` — the PostgreSQL password, stored as a secret
+- `BOOTSTRAP_ADMIN_EMAIL` — the initial administrator's email
+- `BOOTSTRAP_ADMIN_PASSWORD` — a strong, unique password stored as a secret
+- `BOOTSTRAP_ADMIN_NAME=TCPRI Administrator`
+- `APP_BASE_URL=https://workspace.teamtcpri.in`
+
+Use the database's internal connection details shown in Render; keep the web service and database in the same region. Render supplies the application `PORT`. On first startup, Flyway creates the schema in PostgreSQL and the bootstrap administrator is created if that email does not already exist. Do not enter real team data until the deployment and administrator login are verified.
+
+After deployment, add `workspace.teamtcpri.in` as a custom domain in the Render service's settings. Configure DNS using the exact target Render provides; DNS values can differ between services. Keep the existing root domain and website records unchanged. Render's free PostgreSQL databases expire after 30 days and are for testing only; use a persistent paid database before storing real team data.
 
 ## 3. Start the application on Windows PowerShell
 

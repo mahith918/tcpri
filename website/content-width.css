@@ -1,0 +1,30 @@
+.shell {
+  max-width: 1440px;
+}
+
+.masthead-top,
+.masthead-nav,
+.insights > *,
+.footer-top,
+.footer-bottom {
+  max-width: 1356px;
+}
+
+.statement > div {
+  max-width: 760px;
+  margin-left: auto;
+}
+
+.statement h2 {
+  font-size: clamp(42px, 5vw, 76px);
+}
+
+.statement div p:not(.section-number) {
+  max-width: 720px;
+  font-size: clamp(19px, 1.4vw, 22px);
+}
+
+.statement .text-link,
+.statement .about-socials a {
+  font-size: 14px;
+}
